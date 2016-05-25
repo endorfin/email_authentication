@@ -1,5 +1,5 @@
 module EmailAuthentication
-  class EmailAuthenticationMailer < ApplicationMailer
+  class LoginMailer < ApplicationMailer
     def login_link(user_session)
       @user_session = user_session
 

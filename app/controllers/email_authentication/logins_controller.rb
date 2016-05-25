@@ -7,7 +7,7 @@ module EmailAuthentication
       if login_service.successful?
         login_service.renew_token!
 
-        EmailAuthenticationMailer.login_link(login_service.session).deliver
+        LoginMailer.login_link(login_service.session).deliver
 
         handle_login_create
       else
