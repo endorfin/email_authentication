@@ -31,7 +31,7 @@ module EmailAuthentication
       end
 
       def handle_unauthorized
-        redirect_to main_app.root_url, notice: I18n.t('email_authentication.alert.unauthorized')
+        redirect_to main_app.root_url, alert: I18n.t('email_authentication.alert.unauthorized')
       end
 
       def handle_token_invalid
