@@ -13,7 +13,7 @@ module EmailAuthentication
     end
 
     def successful?
-      session.present?
+      session.present? && session.valid?
     end
 
     def renew_token!(duration=15.minutes)
@@ -24,11 +24,11 @@ module EmailAuthentication
     private
 
     def login_only
-      user_session = UserSession.find_by(email: email)
+      UserSession.find_by(email: email)
     end
 
     def login_with_signup
-      user_session = UserSession.find_or_create_by(email: email)
+      UserSession.find_or_create_by!(email: email) rescue nil
     end
 
   end

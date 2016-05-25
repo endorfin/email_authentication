@@ -13,7 +13,7 @@ module EmailAuthentication
       end
 
       def current_session
-        @current_session ||= User.find(session[::EmailAuthentication::SESSION_KEY]) if session[::EmailAuthentication::SESSION_KEY]
+        @current_session ||= UserSession.find(session[::EmailAuthentication::SESSION_KEY]) if session[::EmailAuthentication::SESSION_KEY]
       end
 
       def signed_in?

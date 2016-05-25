@@ -30,5 +30,4 @@ en:
     alert:
       unauthorized: 'Unauthorized'
       token_invalid: 'Invalid or expired login link'
-      login_failed: 'User not exists'
-
+      login_failed: 'E-mail address is not valid or the registration is disabled'
