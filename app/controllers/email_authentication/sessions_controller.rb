@@ -2,11 +2,12 @@ module EmailAuthentication
   class SessionsController < ApplicationController
 
     def create
-      user_session = UserSession.where(login_token: params[:token]).where('login_token_valid_until > ?', Time.now).first
+      authentication_service = AuthenticationService.new(params[:token])
 
-      if user_session
-        session[::EmailAuthentication::SESSION_KEY] = user_session.id
-        user_session.update!(login_token: nil, login_token_valid_until: 1.year.ago) # expire token
+      if authentication_service.valid?
+        session[::EmailAuthentication::SESSION_KEY] = authentication_service.session_key
+
+        authentication_service.expire_token!
 
         handle_authorized
       else
