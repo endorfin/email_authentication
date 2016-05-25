@@ -5,6 +5,7 @@ module EmailAuthentication
 
     initializer  "load_helpers" do
       ActionController::Base.send :include, ::EmailAuthentication::Controller::Helpers
+      ActionController::Base.send :include, ::EmailAuthentication::Controller::Redirects
     end
   end
 end
